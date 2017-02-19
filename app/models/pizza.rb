@@ -1,13 +1,11 @@
-# class Pizza < ActiveRecord::Base
-class Pizza
-  include ActiveModel::Model
+class Pizza < ActiveRecord::Base
+# class Pizza
   require 'net/http'
   require 'json'
   def fetchAll
 
     uri = URI.parse("https://pizzaserver.herokuapp.com/pizzas")
 
-    # Full control
     http = Net::HTTP.new(uri.host, uri.port)
     http.use_ssl = true
 
@@ -15,8 +13,7 @@ class Pizza
 
     response = http.request(request)
 
-    return response
-
+    return JSON.parse(response.body)
   end
   def createPizza()
 

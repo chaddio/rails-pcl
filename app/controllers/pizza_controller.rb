@@ -1,13 +1,10 @@
 class PizzaController < ApplicationController
-  require 'pp'
   def index
-    
     pizza = Pizza.new
-    results = pizza.fetchAll
-    @pizzas = results.body
+    @pizzas = pizza.fetchAll
   end
   def edit
-    #@pizza = Pizza.gets
+    render html: "<strong>still working on <a onclick='history.go.back(1)'>Back</a></strong>".html_safe
   end
   def update
   end

@@ -4,20 +4,17 @@
   <div class="panel-body">
     <table class="table">
       <tr>
-        <th>View</th>
-        <th>ID</th>
+        <th>View/Edit</th>
         <th>Name</th>
+        <th>Description</th>
       </tr>
+      <% @pizzas.each do |pizza| -%>
       <tr>
-        <td></td>
-        <td></td>
-        <td></td>
+        <td><a href="/pizza/edit/<%= pizza['id'] %>">[edit]</a></td>
+        <td><%= pizza['name'] %></td>
+        <td><%= pizza['description'] %></td>
       </tr>
+      <% end -%>
     </table>
   </div>
 </div>
-
-
-
-
-<%= debug @pizzas %>
