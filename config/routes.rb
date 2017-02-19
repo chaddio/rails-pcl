@@ -1,4 +1,16 @@
 Rails.application.routes.draw do
+  get 'pizza/index'
+
+  get 'pizza' => 'pizza#index'
+
+  get 'pizza/edit'
+
+  get 'pizza/edit/:id' => 'pizza#edit'
+
+  get 'pizza/update'
+
+  root 'pizza#index'
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
