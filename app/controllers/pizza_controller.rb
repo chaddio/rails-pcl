@@ -1,11 +1,14 @@
 class PizzaController < ApplicationController
+  layout "pizza"
   def index
     pizza = Pizza.new
     @pizzas = pizza.fetchAll
   end
+
   def edit
-    render html: "<strong>still working on <a onclick='history.go.back(1)'>Back</a></strong>".html_safe
+    render html: "<strong>still working on </strong><a href='#' onclick='history.go(-1); return false;'>Back</a>".html_safe
   end
+
   def update
   end
 end

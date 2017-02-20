@@ -1,0 +1,17 @@
+<div class="panel panel-default">
+  <div class="panel-heading">All Toppings</div>
+  <div class="panel-body">
+    <table class="table">
+      <tr>
+        <th>ID</th>
+        <th>Name</th>
+      </tr>
+      <% @toppings.each do |topping| -%>
+      <tr>
+        <td><%= topping['id'] %></td>
+        <td><%= topping['name'] %></td>
+      </tr>
+      <% end -%>
+    </table>
+  </div>
+</div>

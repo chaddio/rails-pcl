@@ -1,4 +1,10 @@
 Rails.application.routes.draw do
+  get 'toppings/index'
+
+  get 'toppings' => 'toppings#index'
+
+  get 'toppings/create'
+
   get 'pizza/index'
 
   get 'pizza' => 'pizza#index'
