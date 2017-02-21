@@ -1,5 +1,5 @@
-class Pizza < ActiveRecord::Base
-# class Pizza
+# class Pizza < ActiveRecord::Base
+class Pizza
   def fetchAll
 
     uri = URI.parse("https://pizzaserver.herokuapp.com/pizzas")
