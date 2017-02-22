@@ -1,5 +1,5 @@
 class ToppingsController < ApplicationController
-  layout "pizza"
+  # layout "pizza"
   def index
     pizza = Pizza.new
     @toppings = pizza.fetchAllToppings

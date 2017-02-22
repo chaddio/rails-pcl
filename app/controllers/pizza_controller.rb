@@ -1,5 +1,4 @@
 class PizzaController < ApplicationController
-  layout "pizza"
   def index
     pizza = Pizza.new
     @pizzas = pizza.fetchAll
