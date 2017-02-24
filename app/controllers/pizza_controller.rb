@@ -6,8 +6,8 @@ class PizzaController < ApplicationController
 
   def edit
     # render html: "<strong>still working on </strong><a href='#' onclick='history.go(-1); return false;'>Back</a>".html_safe
-    output = "<p>im still working on this, <a href='" + pizza_url  + "'>click to go back</a></p>"
-    render html: output.html_safe
+    pizza = Pizza.new
+    @pizza = pizza.fetch(params[:id])
   end
 
   def update
