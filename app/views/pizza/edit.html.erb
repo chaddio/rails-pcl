@@ -1,6 +1,43 @@
 <div class="panel panel-default">
-  <div class="panel-heading">View / Edit Pizza</div>
+  <div class="panel-heading">View / Edit Pizza ID: <strong><%= params[:id] %></strong></div>
   <div class="panel-body">
-    <%= debug @pizza %>
+    <h3>Pizza:</h3>
+    <div class="row">
+    <div class="col-md-4">
+    <table class="table">
+      <tr><td>Id</td><td><strong><%= @pizza['id'] %></strong></td></tr>
+      <tr><td>Name</td><td><strong><%= @pizza['name'] %></td></tr>
+      <tr><td>Description</td><td><strong><%= @pizza['description'] %></td></tr>
+    </table>
+    </div>
+      <div class="col-md-1">
+        &nbsp;
+      </div>
+      <div class="col-md-4">
+        <button class="btn btn-default" >Add Toppings</button>
+      </div>
   </div>
-</div>
+    <% if @pizza['toppings'].length > 0 %>
+      <h3>Toppings Added:</h3>
+      <table class="table">
+      <th>Topping Id</th><th>Topping Name</th>
+    <% else %>
+        <p><em>No toppings added yet, click the 'Add Toppings' button to add some</em></p>
+    <% end %>
+    <% @pizza['toppings'].each do |topping| %>
+    <% if topping['status'] -%>
+        <h4>There was an error fetching the associated pizza's toppings:</h4>
+        <p>Response Code: <strong><%= topping['status'] %></strong></p>
+        <p>Response Error: <strong><%= topping['error'] %></strong></p>
+    <% else -%>
+        <tr>
+          <td><%= topping['topping_id'] %></td>
+          <td><%= topping['name'] %></td>
+        </tr>
+    <% end -%>
+    <% end %>
+    <% if @pizza['toppings'].length > 0 %>
+      </table>
+    <% end %>
+  </div>
+  </div>

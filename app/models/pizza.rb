@@ -8,6 +8,8 @@ class Pizza < ActiveRecord::Base
     http.use_ssl = true
 
     request = Net::HTTP::Get.new(uri.request_uri)
+    request["Content-Type"] = "application/json"
+    request["Accept"] = "application/json"
 
     response = http.request(request)
 
@@ -21,10 +23,27 @@ class Pizza < ActiveRecord::Base
     http.use_ssl = true
 
     request = Net::HTTP::Get.new(uri.request_uri)
+    request["Content-Type"] = "application/json"
+    request["Accept"] = "application/json"
 
     response = http.request(request)
 
-    return JSON.parse(response.body)
+    response_body = response.body
+
+    object = JSON.parse(response_body)
+    all_pizzas = self.fetchAll
+
+    all_pizzas.each do |pizza|
+      if pizza['id'].to_s == id.to_s
+        @prepend_pizza = '{"id" : "' + pizza['id'].to_s + '", "name" : "' + pizza['name'].to_s + '", "description" : "' + pizza['description'].to_s + '", "toppings" : '
+      end
+    end
+
+    if(object.instance_of? Array)
+      return JSON.parse(@prepend_pizza.to_s + response_body + '}')
+    else
+      return JSON.parse(@prepend_pizza.to_s + '[' + response_body + ']}')
+    end
   end
 
   def fetchAllToppings
@@ -35,6 +54,8 @@ class Pizza < ActiveRecord::Base
     http.use_ssl = true
 
     request = Net::HTTP::Get.new(uri.request_uri)
+    request["Content-Type"] = "application/json"
+    request["Accept"] = "application/json"
 
     response = http.request(request)
 
